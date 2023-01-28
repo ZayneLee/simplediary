@@ -31,12 +31,12 @@ function App() {
   const [data, setData] = useState([]);
   const id = useRef(0);
   const onCreate = (author, content, emotion) => {
-    const created_data = new Date().getTime();
+    const created_date = new Date().getTime();
     const newItem = {
       author,
       content,
       emotion,
-      created_data,
+      created_date,
       id: id.current,
     };
     id.current += 1;
@@ -48,10 +48,17 @@ function App() {
     setData(newData);
   };
 
+  const onEdit = (id, content) => {
+    console.log(id, content);
+    // const editData = data.map((it) => {
+    //   return it.id === id ? { [it.content]: content } : [...it];
+    // });
+    // setData(editData);
+  };
   return (
     <div className="App">
       <DiaryEditor onCreate={onCreate} />
-      <DiaryList diaryList={data} onDelete={onDelete} />
+      <DiaryList diaryList={data} onDelete={onDelete} onEdit={onEdit} />
     </div>
   );
 }
