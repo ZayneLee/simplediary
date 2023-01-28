@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const DiaryItem = ({ it, onDelete, onEdit }) => {
   const { id, author, content, emotion, created_date } = it;
   const [isEdit, setIsEdit] = useState(false);
   const [newContent, setNewContent] = useState(content);
+  const localContentInput = useRef();
 
   const isEdittoggle = () => {
     setIsEdit(!isEdit);
@@ -19,6 +20,15 @@ const DiaryItem = ({ it, onDelete, onEdit }) => {
     }
   };
 
+  const onEditItem = () => {
+    if (newContent.length < 5) {
+      return localContentInput.current.focus();
+    }
+    if (window.confirm(`${id}번째 일기를 수정하시겠습니까?`)) {
+      onEdit(id, newContent);
+      isEdittoggle();
+    }
+  };
   return (
     <div className="DiaryItem">
       <div className="info">
@@ -31,6 +41,7 @@ const DiaryItem = ({ it, onDelete, onEdit }) => {
       <div className="content">
         {isEdit ? (
           <textarea
+            ref={localContentInput}
             value={newContent}
             onChange={(e) => {
               setNewContent(e.target.value);
@@ -42,8 +53,8 @@ const DiaryItem = ({ it, onDelete, onEdit }) => {
       </div>
       {isEdit ? (
         <>
-          <button onClick={() => onEdit(id, newContent)}>수정완료</button>
           <button onClick={handleQuitEdit}>수정취소</button>
+          <button onClick={onEditItem}>수정완료</button>
         </>
       ) : (
         <>

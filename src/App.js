@@ -48,8 +48,12 @@ function App() {
     setData(newData);
   };
 
-  const onEdit = (id, content) => {
-    console.log(id, content);
+  const onEdit = (id, newContent) => {
+    console.log(id, newContent);
+    const newData = data.map((it) =>
+      it.id === id ? { ...it, content: newContent } : it
+    );
+    setData(newData);
     // const editData = data.map((it) => {
     //   return it.id === id ? { [it.content]: content } : [...it];
     // });
