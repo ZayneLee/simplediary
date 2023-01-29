@@ -50,7 +50,7 @@ function App() {
   //   const pendingData = fetch(
   //     "https://jsonplaceholder.typicode.com/comments"
   //   ).then((res) => {
-  //     res.json();
+  //     return res.json();
   //   });
   //   console.log("pendingData", pendingData);
   // }, []);
