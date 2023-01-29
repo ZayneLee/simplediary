@@ -1,31 +1,9 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
 
-// const dummyList = [
-//   {
-//     id: 1,
-//     author: "lee",
-//     content: "hi 1",
-//     emotion: 5,
-//     created_date: new Date().getTime(),
-//   },
-//   {
-//     id: 2,
-//     author: "kim",
-//     content: "hi 2",
-//     emotion: 1,
-//     created_date: new Date().getTime(),
-//   },
-//   {
-//     id: 3,
-//     author: "hee",
-//     content: "hi 3",
-//     emotion: 3,
-//     created_date: new Date().getTime(),
-//   },
-// ];
+// https://jsonplaceholder.typicode.com/comments
 
 function App() {
   const [data, setData] = useState([]);
@@ -42,6 +20,40 @@ function App() {
     id.current += 1;
     setData([newItem, ...data]);
   };
+
+  const getData = async () => {
+    // await 으로 반환 시 타입 any
+    const res = await fetch(
+      "https://jsonplaceholder.typicode.com/comments"
+    ).then((res) => {
+      return res.json();
+    });
+    const initData = res.slice(0, 20).map((it) => {
+      return {
+        author: it.email,
+        content: it.body,
+        emotion: Math.floor(Math.random() * 5) + 1,
+        created_date: new Date().getTime(),
+        id: id.current++,
+      };
+    });
+    setData(initData);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // useEffect(() => {
+  //   getData();
+  //   // await 없이 반환 시 Promise 객체 반환 => pendintData : Promise<void>
+  //   const pendingData = fetch(
+  //     "https://jsonplaceholder.typicode.com/comments"
+  //   ).then((res) => {
+  //     res.json();
+  //   });
+  //   console.log("pendingData", pendingData);
+  // }, []);
 
   const onDelete = (id) => {
     const newData = data.filter((it) => it.id !== id);
