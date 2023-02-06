@@ -1,14 +1,13 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
 
-// https://jsonplaceholder.typicode.com/comments
-
 function App() {
   const [data, setData] = useState([]);
   const id = useRef(0);
-  const onCreate = (author, content, emotion) => {
+
+  const onCreate = useCallback((author, content, emotion) => {
     const created_date = new Date().getTime();
     const newItem = {
       author,
@@ -18,8 +17,8 @@ function App() {
       id: id.current,
     };
     id.current += 1;
-    setData([newItem, ...data]);
-  };
+    setData((data) => [newItem, ...data]);
+  }, []);
 
   const getData = async () => {
     // await 으로 반환 시 타입 any
@@ -65,14 +64,9 @@ function App() {
       it.id === id ? { ...it, content: newContent } : it
     );
     setData(newData);
-    // const editData = data.map((it) => {
-    //   return it.id === id ? { [it.content]: content } : [...it];
-    // });
-    // setData(editData);
   };
 
   const getDiaryAnalysis = useMemo(() => {
-    console.log("일기 분석 시작");
     const goodCount = data.filter((it) => it.emotion >= 3).length;
     const badCount = data.length - goodCount;
     const goodRatio = Math.floor((goodCount / data.length) * 100);
