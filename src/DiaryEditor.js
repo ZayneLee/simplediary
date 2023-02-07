@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const DiaryEditor = ({ onCreate }) => {
-  useEffect(() => {
-    console.log("test");
-  }, []);
   const authorInput = useRef();
   const contentInput = useRef();
   const [state, setState] = useState({

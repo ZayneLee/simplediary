@@ -54,17 +54,17 @@ function App() {
   //   console.log("pendingData", pendingData);
   // }, []);
 
-  const onDelete = (id) => {
-    const newData = data.filter((it) => it.id !== id);
-    setData(newData);
-  };
+  const onDelete = useCallback((id) => {
+    setData((data) => data.filter((it) => it.id !== id));
+  }, []);
 
-  const onEdit = (id, newContent) => {
-    const newData = data.map((it) =>
-      it.id === id ? { ...it, content: newContent } : it
+  const onEdit = useCallback((id, newContent) => {
+    setData((data) =>
+      data.map((it) => {
+        return it.id === id ? { ...it, content: newContent } : it;
+      })
     );
-    setData(newData);
-  };
+  }, []);
 
   const getDiaryAnalysis = useMemo(() => {
     const goodCount = data.filter((it) => it.emotion >= 3).length;
