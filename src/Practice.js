@@ -37,3 +37,23 @@ console.log(person); //{name: 'Zayne', gender: 'male'}
 
 // 객체 프로퍼티 확인
 console.log(`name : ${"name" in person}`); // true
+
+// 배열 리터럴로 배열 생성
+let arr = [1, 2, 3, 4, 5];
+
+// 인덱스로 배열의 요소에 접근
+console.log(arr[0]);
+console.log(arr[1]);
+console.log(arr[2]);
+console.log(arr[3]);
+console.log(arr[4]);
+
+// 배열 요소 추가
+arr.push(6);
+arr.push({ key: "value" });
+arr.push(function a() {});
+
+console.log(arr);
+
+// 배열의 길이
+console(arr.length);
