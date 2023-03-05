@@ -56,4 +56,26 @@ arr.push(function a() {});
 console.log(arr);
 
 // 배열의 길이
-console(arr.length);
+console.log(arr.length);
+
+// 객체 키를 배열 형태로 반환
+const personKeys = Object.keys(person);
+
+console.log(personKeys);
+// ['name', 'gender']
+
+for (let i = 0; i < personKeys.length; i++) {
+  const curKey = personKeys[i];
+  const curValue = person[curKey];
+
+  console.log(`${curKey} : ${curValue}`);
+}
+
+// name : Zayne
+// gender : male
+
+// 객체 값을 배열 형태로 반환
+const personValues = Object.values(person);
+for (let i = 0; i < personValues.length; i++) {
+  console.log(personValues[i]);
+}
