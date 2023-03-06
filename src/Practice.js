@@ -80,111 +80,142 @@
 //   console.log(personValues[i]);
 // }
 
-const arr = [1, 2, 3, 4];
+// const arr = [1, 2, 3, 4];
 
-// forEach
-// 화살표 함수
-arr.forEach((elm) => console.log(elm));
-// 함수 표현식
-arr.forEach(function (elm) {
-  console.log(elm);
-});
+// // forEach
+// // 화살표 함수
+// arr.forEach((elm) => console.log(elm));
+// // 함수 표현식
+// arr.forEach(function (elm) {
+//   console.log(elm);
+// });
 
-// 실행결과 1,2,3,4
+// // 실행결과 1,2,3,4
 
-// map
-// 배열의 모든 요소에 순차적으로 접근하여 함수의 몸체 부분을 수행한 후 새로운 배열로 반환
-const newArr = arr.map((elm) => elm * 2);
+// // map
+// // 배열의 모든 요소에 순차적으로 접근하여 함수의 몸체 부분을 수행한 후 새로운 배열로 반환
+// const newArr = arr.map((elm) => elm * 2);
 
-console.log(newArr); // 실행결과 [2,4,6,8]
+// console.log(newArr); // 실행결과 [2,4,6,8]
 
-// includes
-// 배열의 요소와 전달 받은 인자가 일치하는 지를 확인하여 true / false 반환
+// // includes
+// // 배열의 요소와 전달 받은 인자가 일치하는 지를 확인하여 true / false 반환
 
-let number = 3;
-console.log(arr.includes(number)); // 실행결과 true
+// let number = 3;
+// console.log(arr.includes(number)); // 실행결과 true
 
-// indexOf
-// 전달 받은 인자가 배열의 요소 몇번째에 위치하는 지 확인하여 인덱스 번호 반환 / 일치하는 값이 없으면 -1 반환
+// // indexOf
+// // 전달 받은 인자가 배열의 요소 몇번째에 위치하는 지 확인하여 인덱스 번호 반환 / 일치하는 값이 없으면 -1 반환
 
-console.log(arr.indexOf(number)); // 실행결과 2
+// console.log(arr.indexOf(number)); // 실행결과 2
 
-// findIndex
-// 객체를 포함한 배열에서 조건에 일치하는 값의 인덱스를 반환 / 일치하는 값이 없으면 -1 반환
+// // findIndex
+// // 객체를 포함한 배열에서 조건에 일치하는 값의 인덱스를 반환 / 일치하는 값이 없으면 -1 반환
 
-const arr1 = [
-  { color: "red" },
-  { color: "black" },
-  { color: "blue" },
-  { color: "yellow" },
-];
-// findIndex 는 콜백 함수를 전달해주어야 한다.
-console.log(arr1.findIndex((elm) => elm.color === "red")); // 0
+// const arr1 = [
+//   { color: "red" },
+//   { color: "black" },
+//   { color: "blue" },
+//   { color: "yellow" },
+// ];
+// // findIndex 는 콜백 함수를 전달해주어야 한다.
+// console.log(arr1.findIndex((elm) => elm.color === "red")); // 0
 
-// find
-// 조건에 일치하는 요소를 반환
+// // find
+// // 조건에 일치하는 요소를 반환
 
-const element = arr1.find((elm) => elm.color === "blue");
+// const element = arr1.find((elm) => elm.color === "blue");
 
-console.log(element); // {color: 'blue'}
+// console.log(element); // {color: 'blue'}
 
-const arr2 = [
-  { id: 1, color: "red" },
-  { id: 2, color: "black" },
-  { id: 3, color: "blue" },
-  { id: 4, color: "yellow" },
-  { id: 5, color: "blue" },
-];
+// const arr2 = [
+//   { id: 1, color: "red" },
+//   { id: 2, color: "black" },
+//   { id: 3, color: "blue" },
+//   { id: 4, color: "yellow" },
+//   { id: 5, color: "blue" },
+// ];
 
-// filter
-// 조건에 일치하는 모든 요소를 배열로 반환
+// // filter
+// // 조건에 일치하는 모든 요소를 배열로 반환
 
-console.log(arr2.filter((elm) => elm.color === "blue")); // [{ id: 3, color: "blue" }, { id: 5, color: "blue" }]
+// console.log(arr2.filter((elm) => elm.color === "blue")); // [{ id: 3, color: "blue" }, { id: 5, color: "blue" }]
 
-// slice
-// 배열의 요소를 원하는 크기만큼 반환
+// // slice
+// // 배열의 요소를 원하는 크기만큼 반환
 
-console.log(arr2.slice(0, 2)); // [{ id: 1, color: "red" }, { id: 2, color: "black" }]
+// console.log(arr2.slice(0, 2)); // [{ id: 1, color: "red" }, { id: 2, color: "black" }]
 
-// concat
-// 배열 합치기
+// // concat
+// // 배열 합치기
 
-const a = [1, 2, 3];
-const b = [4, 5];
+// const a = [1, 2, 3];
+// const b = [4, 5];
 
-console.log(a.concat(b)); // [1, 2, 3, 4, 5]
+// console.log(a.concat(b)); // [1, 2, 3, 4, 5]
 
-// sort
-// 배열 정렬
+// // sort
+// // 배열 정렬
 
-let numbers = [4, 1, 6, 22, 10, 5, 13];
+// let numbers = [4, 1, 6, 22, 10, 5, 13];
 
-// 원본 배열을 정렬
-// 문자열 기준으로 정렬
-numbers.sort();
+// // 원본 배열을 정렬
+// // 문자열 기준으로 정렬
+// numbers.sort();
 
-console.log(numbers); // [1, 10, 13, 22, 4, 5, 6]
+// console.log(numbers); // [1, 10, 13, 22, 4, 5, 6]
 
-const compare = (a, b) => {
-  if (a > b) {
-    // 크다
-    return 1;
-  }
+// const compare = (a, b) => {
+//   if (a > b) {
+//     // 크다
+//     return 1;
+//   }
 
-  if (a < b) {
-    // 작다
-    return -1;
-  }
-  // 같다
-  return 0;
+//   if (a < b) {
+//     // 작다
+//     return -1;
+//   }
+//   // 같다
+//   return 0;
+// };
+
+// numbers.sort(compare);
+// console.log(numbers); // [1, 4, 5, 6, 10, 13, 22]
+
+// // join
+// // 배열의 문자열 합치기
+
+// const arr3 = ["Hello", "World", "Zayne", "Lee"];
+// console.log(arr3.join(" ")); // Hello World Zayne Lee
+// // 전달 받은 인자는 구분자 역할
+
+// 단락회로 평가
+// 왼쪽에서 오른쪽으로 연산하게 되는 논리 연산자의 연산 순서를 이용한 문법
+
+console.log(false && true);
+
+// AND 연산자에서 왼쪽이 false 이면 오른쪽 값은 무시되며 연산을 끝내버리는 것을 단락회로 평가
+
+console.log(true || fasle);
+// OR 연산자에서는 왼쪽이 true 이면 오른쪽 값은 읽지 않고 연산이 끝나버린다.
+
+// const getName = (person) => {
+//   if (!person) {
+//     return "객체가 아닙니다.";
+//   }
+//   return person.name;
+// };
+
+// 단락회로 평가 응용
+const getName = (person) => {
+  const name = person && person.name;
+  return name || "객체가 아닙니다.";
 };
 
-numbers.sort(compare);
-console.log(numbers); // [1, 4, 5, 6, 10, 13, 22]
+let personA;
+const A = getName(personA);
+console.log(A); // 실행결과 : 객체가 아닙니다.
 
-// join
-// 배열의 문자열 합치기
-
-const arr3 = ["Hello", "World", "Zayne", "Lee"];
-console.log(arr3.join(" ")); // Hello World Zayne Lee
-// 전달 받은 인자는 구분자 역할
+let PersonB = { name: "Zayne" };
+const B = getName(PersonB);
+console.log(B); // 실행결과 : Zayne
