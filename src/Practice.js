@@ -192,11 +192,11 @@
 // 단락회로 평가
 // 왼쪽에서 오른쪽으로 연산하게 되는 논리 연산자의 연산 순서를 이용한 문법
 
-console.log(false && true);
+// console.log(false && true);
 
-// AND 연산자에서 왼쪽이 false 이면 오른쪽 값은 무시되며 연산을 끝내버리는 것을 단락회로 평가
+// // AND 연산자에서 왼쪽이 false 이면 오른쪽 값은 무시되며 연산을 끝내버리는 것을 단락회로 평가
 
-console.log(true || fasle);
+// console.log(true || fasle);
 // OR 연산자에서는 왼쪽이 true 이면 오른쪽 값은 읽지 않고 연산이 끝나버린다.
 
 // const getName = (person) => {
@@ -207,15 +207,61 @@ console.log(true || fasle);
 // };
 
 // 단락회로 평가 응용
-const getName = (person) => {
-  const name = person && person.name;
-  return name || "객체가 아닙니다.";
+// const getName = (person) => {
+//   const name = person && person.name;
+//   return name || "객체가 아닙니다.";
+// };
+
+// let personA;
+// const a = getName(personA);
+// console.log(a); // 실행결과 : 객체가 아닙니다.
+
+// let personB = { name: "Zayne" };
+// const b = getName(PersonB);
+// console.log(b); // 실행결과 : Zayne
+
+// function isCountry(country) {
+//   if (country === "USA" || country === "UK") {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+// 배열 내장 함수를 활용한 조건문 업그레이드
+function isCountry(country) {
+  if (["USA", "UK"].includes(country)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+const a = isCountry("USA");
+const b = isCountry("Korea");
+
+console.log(a);
+console.log(b);
+
+// 객체 괄호표기법을 활용한 조건문 업그레이드
+
+const getMeal = (mealType) => {
+  if (mealType === "한식") return "불고기";
+  if (mealType === "중식") return "짜장면";
+  if (mealType === "일식") return "초밥";
+  if (mealType === "양식") return "파스타";
+  return "굶기";
 };
 
-let personA;
-const A = getName(personA);
-console.log(A); // 실행결과 : 객체가 아닙니다.
+const meal = {
+  한식: "불고기",
+  중식: "짜장면",
+  일식: "초밥",
+  양식: "파스타",
+};
 
-let PersonB = { name: "Zayne" };
-const B = getName(PersonB);
-console.log(B); // 실행결과 : Zayne
+const getMeal = (mealType) => {
+  return meal[mealType] || "굶기";
+};
+
+console.log(getMeal("한식"));
+console.log(getMeal());
