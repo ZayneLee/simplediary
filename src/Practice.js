@@ -227,41 +227,70 @@
 //     return false;
 //   }
 // }
-// 배열 내장 함수를 활용한 조건문 업그레이드
-function isCountry(country) {
-  if (["USA", "UK"].includes(country)) {
-    return true;
-  } else {
-    return false;
-  }
-}
+// // 배열 내장 함수를 활용한 조건문 업그레이드
+// function isCountry(country) {
+//   if (["USA", "UK"].includes(country)) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
 
-const a = isCountry("USA");
-const b = isCountry("Korea");
+// const a = isCountry("USA");
+// const b = isCountry("Korea");
 
-console.log(a);
+// console.log(a);
+// console.log(b);
+
+// // 객체 괄호표기법을 활용한 조건문 업그레이드
+
+// const getMeal = (mealType) => {
+//   if (mealType === "한식") return "불고기";
+//   if (mealType === "중식") return "짜장면";
+//   if (mealType === "일식") return "초밥";
+//   if (mealType === "양식") return "파스타";
+//   return "굶기";
+// };
+
+// const meal = {
+//   한식: "불고기",
+//   중식: "짜장면",
+//   일식: "초밥",
+//   양식: "파스타",
+// };
+
+// const getMeal = (mealType) => {
+//   return meal[mealType] || "굶기";
+// };
+
+// console.log(getMeal("한식"));
+// console.log(getMeal());
+
+// 비 구조화 할당
+let arr = ["one", "two", "three"];
+
+const [a, b, c, d = "four"] = arr; // d 는 four 로 기본값 지정
+
 console.log(b);
+console.log(d);
 
-// 객체 괄호표기법을 활용한 조건문 업그레이드
+비 구조화 할당 응용
+let a = 1;
+let b = 2;
 
-const getMeal = (mealType) => {
-  if (mealType === "한식") return "불고기";
-  if (mealType === "중식") return "짜장면";
-  if (mealType === "일식") return "초밥";
-  if (mealType === "양식") return "파스타";
-  return "굶기";
-};
+[a, b] = [b, a];
 
-const meal = {
-  한식: "불고기",
-  중식: "짜장면",
-  일식: "초밥",
-  양식: "파스타",
-};
+console.log(a, b); // 2 1
 
-const getMeal = (mealType) => {
-  return meal[mealType] || "굶기";
-};
+// 객체 비 구조화 할당
 
-console.log(getMeal("한식"));
-console.log(getMeal());
+let object = { ONE: "one", TWO: "two", THREE: "three" };
+// 객체 비 구조화 할당은 키값이 기준이 된다. 키 값이 없는 경우 기본값을 설정할 수 있다.
+let { TWO, FOUR = "four" } = object;
+// 키값이 기준이 되기 때문에 순서와 무관하게 키 값 TWO 를 가지고 올 수 있다.
+console.log(TWO); // two
+console.log(FOUR); //four
+// 객체 비 구조화 할당은 다음과 같이 키 값의 변경이 가능하다.
+let { ONE: MYONE } = object;
+
+console.log(MYONE); // one
